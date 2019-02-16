@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}
+   <title>C Elston Gallery</title>
+{% endblock %}
+
+{% block plugins %}
+   {{ super() }}
+   <script src="/static/plugins/justifiedgallery/jquery.justifiedGallery.min.js"></script>
+   <link rel="stylesheet" href="/static/plugins/justifiedgallery/justifiedGallery.min.css">
+
+   <script src="/static/plugins/fancybox/jquery.fancybox.js"></script>
+   <link rel="stylesheet" href="/static/plugins/fancybox/jquery.fancybox.css">
+
+   <script src="/static/plugins/slicknav/jquery.slicknav.js"></script>
+   <link rel="stylesheet" href="/static/plugins/slicknav/slicknav.css">
+
+   <script src="/static/plugins/waitforimages/jquery.waitforimages.js"></script>
+   <link rel="stylesheet" href="/static/css/photogallery.css">
+   <script>
+
+      function showNextImg(counter)
+      {
+         if (counter == 10)
+         {
+            $('.gallery').justifiedGallery('norewind');
+            counter=0;
+         }
+
+         counter=counter+1;
+
+         img = $('.gallery img[src=""]').first();
+         img.attr("src", img.data('src'));
+         img.on('load', function()
+            {
+               showNextImg(counter);
+            });
+      }
+
+      $( document ).ready(function() {
+
+         $('.slimmenu').slicknav({prependTo: '#navbar'});
+         
+         $('.gallery').justifiedGallery('destroy');
+         $('.gallery').justifiedGallery({rowHeight: 300, lastRow:'center'});
+         $('.gallery a').fancybox({fullScreen: {autoStart: true}, helpers: { title: { type: 'outside' }}});
+
+         showNextImg(1);
+
+      });
+
+   </script>
+{% endblock %}
+
+{% block body %}
+   <div id="navbar">
+   <ul class="slimmenu" style="display: none">
+      {% for menuHtmlLine in menuHtml %}
+         {{menuHtmlLine|safe}}
+      {% endfor %}
+   </ul>
+   </div>
+   <div class="gallery">
+   <h1>Welcome to the gallery</h1>
+      {% for flink in flinks %}
+         <a data-fancybox="gallery" href="{{ flink["med"] }}"
+            data-caption="{{ flink["desc"] }}">
+            <img  src="" data-src="{{ flink["sml"]}}">
+         </a>
+      {% endfor  %}
+   </div>
+{% endblock %}
