@@ -73,7 +73,10 @@ def getalbum(imgFolder):
     returnVal=""
 
     imgFiles=glob.glob(albumSourceDir + '/*.jpg')
-    imgFiles.sort(reverse=True)
+    if imgFolder == '00 Portfolio':
+        imgFiles.sort(reverse=True)
+    else:
+        imgFiles.sort()
 
     flinks=list()
 
