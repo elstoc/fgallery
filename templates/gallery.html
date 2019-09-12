@@ -42,8 +42,9 @@
          $('.slimmenu').slicknav({prependTo: '#navbar'});
          
          $('.gallery').justifiedGallery('destroy');
-         $('.gallery').justifiedGallery({rowHeight: 300, lastRow:'center'});
-         $('.gallery a').fancybox({fullScreen: {autoStart: true}, helpers: { title: { type: 'outside' }}});
+         $('.gallery').justifiedGallery({rowHeight: 300, maxRowHeight:400, lastRow:'center',  margins: 7, border: 20, captions: true});
+         $('.gallery a').fancybox({fitToView: false, fullScreen: {autoStart: true}, helpers: { title: { type: 'outside' }}});
+         $('.gallery h1').remove();
 
          showNextImg(1);
 
@@ -60,12 +61,11 @@
       {% endfor %}
    </ul>
    </div>
-   <div class="gallery">
+   <div class="gallery justified-gallery">
    <h1>Welcome to the gallery</h1>
       {% for flink in flinks %}
-         <a data-fancybox="gallery" href="{{ flink["med"] }}"
-            data-caption="{{ flink["desc"] }}">
-            <img  src="" data-src="{{ flink["sml"]}}">
+         <a data-fancybox="gallery" href="{{ flink["med"] }}" data-caption="{{ flink["desc"] }}">
+            <img alt="{{ flink["desc"] }}" src="" data-src="{{ flink["sml"]}}">
          </a>
       {% endfor  %}
    </div>

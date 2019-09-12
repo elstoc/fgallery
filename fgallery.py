@@ -100,10 +100,15 @@ def getalbum(imgFolder):
             imgDateTime = dtDate.strftime('%B %Y')
         except:
             imgTitle = ''
-        imgDesc = imgTitle \
-                 + " (" \
-                 + imgDateTime \
-                 + ")"
+
+        if imgTitle == '':
+            imgDesc = imgDateTime
+        else:
+            imgDesc = imgTitle \
+                     + " (" \
+                     + imgDateTime \
+                     + ")"
+
         flinks.extend([ {"sml" : url_for('getimg', imgFolder=imgFolder, imgSize='sml', imgFile=os.path.basename(imgFile)),
                          "med" : url_for('getimg', imgFolder=imgFolder, imgSize='med', imgFile=os.path.basename(imgFile)),
                          "desc": imgDesc }])

@@ -11,3 +11,9 @@
    top: 50px;
    overflow:hidden;
 }*/
+body {
+   background-color:#4c4c4c;
+}
+.gallery a {
+   border: 2px solid black;
+}
