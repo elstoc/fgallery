@@ -1,7 +1,7 @@
 /*!
- * justifiedGallery - v4.0.0-alpha
+ * justifiedGallery - v3.7.0
  * http://miromannino.github.io/Justified-Gallery/
- * Copyright (c) 2019 Miro Mannino
+ * Copyright (c) 2018 Miro Mannino
  * Licensed under the MIT license.
  */
 .justified-gallery {
@@ -26,13 +26,7 @@
 .justified-gallery > figure > img,
 .justified-gallery > a > a > img,
 .justified-gallery > div > a > img,
-.justified-gallery > figure > a > img,
-.justified-gallery > a > svg,
-.justified-gallery > div > svg,
-.justified-gallery > figure > svg,
-.justified-gallery > a > a > svg,
-.justified-gallery > div > a > svg,
-.justified-gallery > figure > a > svg {
+.justified-gallery > figure > a > img {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -69,15 +63,13 @@
   -o-transition: opacity 500ms ease-in;
   transition: opacity 500ms ease-in;
 }
-.justified-gallery > .jg-entry-visible {
+.justified-gallery > .entry-visible {
   filter: "alpha(opacity=100)";
   opacity: 1;
   background: none;
 }
-.justified-gallery > .jg-entry-visible > img,
-.justified-gallery > .jg-entry-visible > a > img,
-.justified-gallery > .jg-entry-visible > svg,
-.justified-gallery > .jg-entry-visible > a > svg {
+.justified-gallery > .entry-visible > img,
+.justified-gallery > .entry-visible > a > img {
   filter: "alpha(opacity=100)";
   opacity: 1;
   -webkit-transition: opacity 500ms ease-in;

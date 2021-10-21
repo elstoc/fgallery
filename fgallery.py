@@ -1,5 +1,6 @@
 from flask import Flask, render_template, send_file, abort, url_for, redirect, request
 from PIL import Image
+from PIL import ImageEnhance
 #import pyexiv2
 from libxmp.utils import file_to_dict
 from libxmp import consts
@@ -125,7 +126,7 @@ def getimg(imgFolder,imgSize,imgFile):
     elif imgSize == "med":
         targetWidth=1920
         targetHeight=1080
-        targetQuality=90
+        targetQuality=95
 
     #generate source and target file names
     origFile=gallerySource + "/" + imgFolder + "/" + imgFile
@@ -160,6 +161,9 @@ def getimg(imgFolder,imgSize,imgFile):
         #regenerate the image file
         with Image.open(origFile) as img:
             img.thumbnail(size=[targetWidth, targetHeight], resample=Image.LANCZOS)
+            if imgSize == "med":
+                enhancer = ImageEnhance.Sharpness(img)
+                img = enhancer.enhance(1.2)
             img.save(fp=targetFile, quality=targetQuality)
 
     return send_file(targetFile,mimetype='image/jpeg')
