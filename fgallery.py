@@ -120,8 +120,8 @@ def getalbum(imgFolder):
 def getimg(imgFolder,imgSize,imgFile):
 
     if imgSize == "sml":
-        targetWidth=600
-        targetHeight=600
+        targetWidth=700
+        targetHeight=400
         targetQuality=50
     elif imgSize == "med":
         targetWidth=1920
@@ -163,7 +163,7 @@ def getimg(imgFolder,imgSize,imgFile):
             img.thumbnail(size=[targetWidth, targetHeight], resample=Image.LANCZOS)
             if imgSize == "med":
                 enhancer = ImageEnhance.Sharpness(img)
-                img = enhancer.enhance(1.2)
+                img = enhancer.enhance(1.1)
             img.save(fp=targetFile, quality=targetQuality)
 
     return send_file(targetFile,mimetype='image/jpeg')
