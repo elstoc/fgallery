@@ -43,7 +43,7 @@
          
          $('.gallery').justifiedGallery('destroy');
          $('.gallery').justifiedGallery({rowHeight: 275, maxRowHeight:325, lastRow:'center',  margins: 7, border: 20, captions: true});
-         $('.gallery a').fancybox({ fullScreen: {autoStart: true} }); //, helpers: { title: { type: 'outside' }}});
+         $('.gallery a').fancybox({padding: 0, margin: 0, infoBar: false, fitToView: true, fullScreen: {autoStart: true} }); //, helpers: { title: { type: 'outside' }}});
          $('.gallery h1').remove();
 
          //showNextImg(1);
@@ -64,7 +64,7 @@
    <div class="gallery justified-gallery">
    <h1>Welcome to the gallery</h1>
       {% for flink in flinks %}
-         <a data-type="image" data-fancybox="gallery" href="{{ flink["med"] }}" data-caption="{{ flink["desc"] }}">
+         <a data-fancybox="gallery" href="{{ flink["med"] }}" data-caption="{{ flink["desc"] }}">
             <img alt="{{ flink["desc"] }}" src="{{ flink["sml"]}}" data-src="{{ flink["sml"]}}">
          </a>
       {% endfor  %}
