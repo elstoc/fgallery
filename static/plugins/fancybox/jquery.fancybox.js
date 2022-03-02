@@ -2864,11 +2864,12 @@
         return;
       }
 
+      //CE 02/03/2022: Use Math.round to correct blurry images caused by 0.5px translation
       if (props.left !== undefined || props.top !== undefined) {
         str =
-          (props.left === undefined ? $el.position().left : props.left) +
+          (props.left === undefined ? Math.round($el.position().left) : Math.round(props.left)) +
           "px, " +
-          (props.top === undefined ? $el.position().top : props.top) +
+          (props.top === undefined ? Math.round($el.position().top) : Math.round(props.top)) +
           "px";
 
         if (this.use3d) {
