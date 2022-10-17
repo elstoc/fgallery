@@ -98,7 +98,6 @@ body.compensate-for-scrollbar {
 .fancybox-stage {
   direction: ltr;
   overflow: visible;
-  -webkit-transform: translate3d(0, 0, 0);
   z-index: 99994; }
 
 .fancybox-is-open .fancybox-stage {
